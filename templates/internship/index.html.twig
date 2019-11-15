@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Internship index{% endblock %}
+
+{% block body %}
+    <h1>Internship index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CompanyName</th>
+                <th>ContactDate</th>
+                <th>ContactWay</th>
+                <th>ContactName</th>
+                <th>JobName</th>
+                <th>SecondContactDate</th>
+                <th>Response</th>
+                <th>InternshipProposed</th>
+                <th>InternshipAccepted</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for internship in internships %}
+            <tr>
+                <td>{{ internship.id }}</td>
+                <td>{{ internship.companyName }}</td>
+                <td>{{ internship.contactDate ? internship.contactDate|date('Y-m-d') : '' }}</td>
+                <td>{{ internship.contactWay }}</td>
+                <td>{{ internship.contactName }}</td>
+                <td>{{ internship.jobName }}</td>
+                <td>{{ internship.secondContactDate ? internship.secondContactDate|date('Y-m-d') : '' }}</td>
+                <td>{{ internship.response ? 'Yes' : 'No' }}</td>
+                <td>{{ internship.internshipProposed ? 'Yes' : 'No' }}</td>
+                <td>{{ internship.internshipAccepted ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('internship_show', {'id': internship.id}) }}">show</a>
+                    <a href="{{ path('internship_edit', {'id': internship.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('internship_new') }}">Create new</a>
+{% endblock %}

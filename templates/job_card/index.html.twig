@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}JobCard index{% endblock %}
+
+{% block body %}
+    <h1>JobCard index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>GitLink</th>
+                <th>WebSiteLink</th>
+                <th>LinkedinLink</th>
+                <th>Cv</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job_card in job_cards %}
+            <tr>
+                <td>{{ job_card.id }}</td>
+                <td>{{ job_card.gitLink }}</td>
+                <td>{{ job_card.webSiteLink }}</td>
+                <td>{{ job_card.linkedinLink }}</td>
+                <td>{{ job_card.cv }}</td>
+                <td>
+                    <a href="{{ path('job_card_show', {'id': job_card.id}) }}">show</a>
+                    <a href="{{ path('job_card_edit', {'id': job_card.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('job_card_new') }}">Create new</a>
+{% endblock %}

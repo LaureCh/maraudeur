@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit JobCard{% endblock %}
+
+{% block body %}
+    <h1>Edit JobCard</h1>
+
+    {{ include('job_card/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('job_card_index') }}">back to list</a>
+
+    {{ include('job_card/_delete_form.html.twig') }}
+{% endblock %}

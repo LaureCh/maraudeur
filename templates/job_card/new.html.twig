@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New JobCard{% endblock %}
+
+{% block body %}
+    <h1>Create new JobCard</h1>
+
+    {{ include('job_card/_form.html.twig') }}
+
+    <a href="{{ path('job_card_index') }}">back to list</a>
+{% endblock %}
